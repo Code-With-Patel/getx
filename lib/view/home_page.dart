@@ -37,7 +37,71 @@ class HomePage extends StatelessWidget {
 
                   // print(homeController.getString());
                 },
-                child: Text("Route to Second Page"))
+                child: Text("Route to Second Page")),
+            ElevatedButton(
+              onPressed: () {
+                print("Get Platfomr: ${GetPlatform.isIOS}");
+              },
+              child: const Text("Get Platform"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                print("Get Hight: ${Get.height}");
+                print("Get Width: ${Get.width}");
+              },
+              child: const Text("Get Size"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Get.defaultDialog(
+                    title: "Here is the Title",
+                    content: Text("This is Long Content"),
+                    actions: [
+                      TextButton(
+                          onPressed: () {
+                            Get.back();
+                          },
+                          child: Text("Cancel")),
+                      TextButton(
+                          onPressed: () {
+                            print("This is Confirm");
+                            Get.back();
+                          },
+                          child: Text("Confirm")),
+                    ]);
+              },
+              child: const Text("Open Dialog"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // Get.snackbar("CodeWithPatel", "Best Developer through People",
+                //     snackPosition: SnackPosition.BOTTOM);
+
+                Get.showSnackbar(GetSnackBar(
+                  title: "Code With Patel",
+                  message: "Youtube Learning Platform",
+                  onTap: (e){
+                    Get.back();
+                  },
+                  duration: Duration(seconds: 2),
+                ));
+              },
+              child: const Text("Open SnackBar"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Get.bottomSheet(
+                  Container(
+                    alignment: Alignment.center,
+                    width: Get.width,
+                    height: Get.height*0.5,
+                    child: Text("Code With Patel"),
+                  ),
+                  backgroundColor: Colors.teal
+                );
+              },
+              child: const Text("Open BottomSheet"),
+            )
           ],
         ),
       ),
